@@ -16,6 +16,7 @@ class FaceAnonymizer:
         [[(100, 50, 80, 80), (250, 60, 85, 85)] : means two faces were detected. 
         """
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        
         faces = self.face_cascade.detectMultiScale(
             gray,
             scaleFactor=1.1,
@@ -85,7 +86,7 @@ def main():
     )
     
     st.title("Face Anonymizer")
-    st.markdown("Upload an image and automatically blur or pixelate faces for privacy protection")
+    st.markdown("Upload an image ")
     
 
     if 'anonymizer' not in st.session_state:
