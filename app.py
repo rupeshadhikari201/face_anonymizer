@@ -166,7 +166,7 @@ def main():
         
         with col2:
             st.subheader("Anonymized Image")
-            st.image(result_pil, use_column_width=True)
+            st.image(result_pil, use_container_width=True)
         
         # Show results info
         if face_count > 0:
