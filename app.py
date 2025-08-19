@@ -54,7 +54,7 @@ class FaceAnonymizer:
         faces = self.detect_faces(image)
         
         for (x, y, w, h) in faces:
-            # Add padding around the face
+            # add padding around the detected face
             x = max(0, x - padding)
             y = max(0, y - padding)
             w = min(image.shape[1] - x, w + 2 * padding)
@@ -137,14 +137,14 @@ def main():
     )
     
     if uploaded_file is not None:
-        # if image is uploaded open and display the image 
+        # if image is uploaded, open and display the image 
         pil_image = Image.open(uploaded_file)
         
         col1, col2 = st.columns(2)
         
         with col1:
             st.subheader("📸 Original Image")
-            st.image(pil_image, use_column_width=True)
+            st.image(pil_image, use_container_width=True)
         
         # process the image
         with st.spinner("detecting and anonymizing faces"):
@@ -174,7 +174,6 @@ def main():
         else:
             st.warning("No faces detected in the image")
         
-       
         img_buffer = io.BytesIO()
         result_pil.save(img_buffer, format='PNG')
         img_buffer.seek(0)
@@ -187,7 +186,7 @@ def main():
             use_container_width=True
         )
         
-        # Settings info
+    
         with st.expander("ℹ️ Processing Details"):
             st.write(f"**Method:** {method.title()}")
             if method == "blur":
